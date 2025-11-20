@@ -1,10 +1,12 @@
 import { usePagination } from "./hooks/usePagination.jsx";
 import { usePodcasts } from "./context/PodcastContext.jsx";
+import Header from "./components/Header.jsx";
 import SearchBar from "./components/SearchBar.jsx";
 import PodcastGrid from "./components/PodcastGrid.jsx";
 import GenreFilter from "./components/GenreFilter.jsx";
 import SortFilter from "./components/SortFilter.jsx";
 import "./App.css";
+
 
 /**
  * Main app component
@@ -51,6 +53,7 @@ export default function App() {
 
   return (
     <>
+      <Header />
       {/* Search bar and filters section */}
       <div className="filter-container">
         <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
