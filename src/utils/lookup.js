@@ -15,7 +15,11 @@ export function createGenreLookup(allGenres) {
    * @returns {Array} titles - Array of all found genre titles
    */
   function getGenreTitlesByIds(ids) {
-    return ids.map((id) => allGenres.find((genre) => genre.id === id).title);
+    if (!Array.isArray(ids)) return [];
+    return ids.map((id) => {
+      const genre = allGenres.find((genre) => genre.id === id);
+      return genre ? genre.title : "unknown";
+    });
   }
 
   return { getGenreTitlesByIds };
