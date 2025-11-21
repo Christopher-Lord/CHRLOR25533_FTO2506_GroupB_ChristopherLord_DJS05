@@ -34,9 +34,6 @@ body {
   margin: 0;
 
   position: relative;
-}
-
-main {
   background: var(--secondary-color);
 }
 
