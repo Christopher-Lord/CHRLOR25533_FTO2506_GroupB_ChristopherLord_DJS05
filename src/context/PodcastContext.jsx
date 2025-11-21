@@ -1,7 +1,9 @@
-import { createContext, useContext, useState, useMemo } from "react";
+import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch.jsx";
 import { createGenreLookup } from "../utils/lookup.js";
-import { genres } from "../data.js";
+import { useGenres } from "../hooks/useGenres.jsx";
+import Loading from "../components/Loading.jsx";
+import Error from "../components/Error.jsx";
 
 const API_KEY = "https://podcast-api.netlify.app/";
 
@@ -27,7 +29,13 @@ export function usePodcasts() {
  */
 export function PodcastProvider({ children }) {
   // Using the custom hook to fetch data, along with loading and error states
-  const { data, isLoading, error } = useFetch(API_KEY);
+  const {
+    data,
+    isLoading: podcastLoading,
+    error: podcastError,
+  } = useFetch(API_KEY);
+
+  const { genres, isLoading: genresLoading, error: genresError } = useGenres();
 
   //UI states for filtering, searching and sorting
   const [selectedGenre, setSelectedGenre] = useState("all-genres");
@@ -72,13 +80,25 @@ export function PodcastProvider({ children }) {
     //Update if these values change
   }, [podcasts, selectedGenre, searchTerm, sortOption]);
 
+  // Changing styling on main element when loading and error states change
+  useEffect(() => {
+    const mainElement = document.querySelector("main");
+    if (!mainElement) return;
+
+    if (podcastLoading || genresLoading || podcastError || genresError) {
+      mainElement.style.height = "100vh";
+    } else {
+      mainElement.style.height = "";
+    }
+  }, [podcastLoading, genresLoading, podcastError, genresError]);
+
   return (
     // Supplies the context values to the children
     // React components inside {children} can now call usePodcasts()
     <PodcastContext.Provider
       value={{
-        isLoading,
-        error,
+        isLoading: podcastLoading || genresLoading,
+        error: podcastError || genresError,
         genres,
         selectedGenre,
         setSelectedGenre,
@@ -89,7 +109,13 @@ export function PodcastProvider({ children }) {
         podcasts: filteredPodcasts,
       }}
     >
-      {children}
+      {podcastLoading || genresLoading ? (
+        <Loading message="Loading Podcasts ⚙️" />
+      ) : podcastError || genresError ? (
+        <Error message={`⚠️ Error: ${error}`} />
+      ) : (
+        children
+      )}
     </PodcastContext.Provider>
   );
 }
