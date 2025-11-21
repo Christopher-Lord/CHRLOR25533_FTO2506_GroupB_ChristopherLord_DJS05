@@ -1,13 +1,12 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import App from "./App.jsx";
-import { PodcastProvider } from "./context/PodcastContext.jsx";
+import { BrowserRouter } from "react-router-dom";
 
 /**
  * Mounts the "App" React component to the DOM element with the ID "root"
  */
 createRoot(document.getElementById("root")).render(
-  <PodcastProvider>
+  <BrowserRouter>
     <App />
-  </PodcastProvider>,
+  </BrowserRouter>,
 );
