@@ -2,8 +2,8 @@ import { createContext, useContext, useState, useMemo, useEffect } from "react";
 import { useFetch } from "../hooks/useFetch.jsx";
 import { createGenreLookup } from "../utils/lookup.js";
 import { useGenres } from "../hooks/useGenres.jsx";
-import Loading from "../components/Loading.jsx";
-import Error from "../components/Error.jsx";
+import Loading from "../components/UI/Loading.jsx";
+import Error from "../components/UI/Error.jsx";
 
 const API_KEY = "https://podcast-api.netlify.app/";
 

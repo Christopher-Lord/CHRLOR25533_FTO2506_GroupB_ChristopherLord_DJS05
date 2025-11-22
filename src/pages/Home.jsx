@@ -1,18 +1,18 @@
 import { usePagination } from "../hooks/usePagination.jsx";
 import { usePodcasts } from "../context/PodcastContext.jsx";
-import SearchBar from "../components/SearchBar.jsx";
-import PodcastGrid from "../components/PodcastGrid.jsx";
-import GenreFilter from "../components/GenreFilter.jsx";
-import SortFilter from "../components/SortFilter.jsx";
+import SearchBar from "../components/Filters/SearchBar.jsx";
+import PodcastGrid from "../components/Podcasts/PodcastGrid.jsx";
+import GenreFilter from "../components/Filters/GenreFilter.jsx";
+import SortFilter from "../components/Filters/SortFilter.jsx";
 
 /**
  * Home page component
- * 
+ *
  * This component:
  * - Retrieves podcast data and UI state from PodcastContext
  * - Applies pagination using the usePagination hook
  * - Renders search, filters and paginated podcast grid
- * 
+ *
  * @returns {JSX.Element} Home page UI
  */
 export default function Home() {

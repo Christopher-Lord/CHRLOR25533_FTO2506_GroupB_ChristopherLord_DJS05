@@ -1,13 +1,13 @@
 import { useState } from "react";
-import { truncateText } from "../utils/truncateText.js";
+import { truncateText } from "/src/utils/truncateText.js";
 import { Link } from "react-router-dom";
 import "/styles.css";
 
 /**
  * PodcastDetails Component
- * 
+ *
  * Displays detailed information about a podcast
- * 
+ *
  * @param {Object} podcast - props.podcast: Podcast data object
  *  - podcast.title - Podcast title
  *  - podcast.description - Podcast description
@@ -15,8 +15,8 @@ import "/styles.css";
  *  - podcast.image - URL of podcast cover image
  *  - podcast.genres - List of genre names
  *  - podcast.seasons - Array of season objects
- * 
- * @returns {JSX.Element} Podcast details UI 
+ *
+ * @returns {JSX.Element} Podcast details UI
  */
 export default function PodcastDetails({ podcast }) {
   // Currently selected season number, initialized to the first season in the list
@@ -35,7 +35,6 @@ export default function PodcastDetails({ podcast }) {
   return (
     <div className="podcast-modal-container" id="podcast-modal">
       <div className="modal-content">
-
         {/* Back button to return to home page */}
         <Link to={"/"} className="link">
           <div className="back-btn">
@@ -71,7 +70,7 @@ export default function PodcastDetails({ podcast }) {
               })}
             </p>
 
-              {/* Podcast stats: number of seasons and total episodes */}
+            {/* Podcast stats: number of seasons and total episodes */}
             <div className="stats">
               <p>
                 <strong>{podcast.seasons.length}</strong> Seasons
@@ -109,7 +108,6 @@ export default function PodcastDetails({ podcast }) {
 
         {/* SEASON DETAILS */}
         <div className="season-card-container">
-
           {/* Display season card if a valid season is selected */}
           {currentSeasonObj && (
             <div className="season-card">
@@ -132,7 +130,6 @@ export default function PodcastDetails({ podcast }) {
           <div className="episodes-list">
             {currentSeasonObj.episodes.map((ep) => (
               <div key={ep.episode} className="episode-card">
-
                 {/* All episodes re-use season cover image */}
                 <img
                   className="episode-img"

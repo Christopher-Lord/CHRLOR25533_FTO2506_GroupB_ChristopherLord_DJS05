@@ -1,6 +1,6 @@
 import { Route, Routes } from "react-router-dom";
 import { PodcastProvider } from "./context/PodcastContext.jsx";
-import Header from "./components/Header.jsx";
+import Header from "./components/UI/Header.jsx";
 import Home from "./pages/Home.jsx";
 import ShowDetails from "./pages/ShowDetails.jsx";
 import "./App.css";
