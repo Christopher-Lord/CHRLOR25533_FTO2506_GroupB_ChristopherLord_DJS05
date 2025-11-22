@@ -1,3 +1,8 @@
+/**
+ * Header component
+ * 
+ * @returns {JSX.Element} Header UI
+ */
 export default function Header() {
   return (
     <header className="podcast-header">

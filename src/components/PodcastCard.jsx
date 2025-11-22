@@ -16,6 +16,7 @@ export default function PodcastCard({ podcast }) {
   const formattedDate = format(new Date(updated), "MMM d, yyyy");
 
   return (
+    // Link element to route to specified page when a card is clicked
     <Link to={`/show/${id}`} className="link">
       <div className="podcast-card">
         <img src={image} alt={title} className="preview-cover-img" />

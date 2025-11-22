@@ -8,10 +8,7 @@ import "./App.css";
 /**
  * Main app component
  *
- * This component:
- * - Retrieves podcast data and UI state from PodcastContext
- * - Applies pagination using the usePagination hook
- * - Renders search, filters and paginated podcast grid
+ * Builds main application UI and defines page routes
  *
  * @returns {JSX.Element} The rendered application UI
  */
